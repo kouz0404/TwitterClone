@@ -75,6 +75,25 @@ $view_user = $user;
 $view_requested_user = findUser($requested_user_id, $user['id']);
 // ツイート一覧
 $view_tweets = findTweets($user, null, [$requested_user_id]);
+
+
+
+//ツイート削除
+if(isset($_POST['tweet_id'])){
+$deletepost = $_POST['tweet_id'];
+
+
+
+deleteTweet($deletepost);
+
+ // リロード
+ header('Location: ' . HOME_URL . 'Controllers/profile.php');
+ exit;
+
+}
+
+
+
  
 // 画面表示
 include_once '../Views/profile.php';

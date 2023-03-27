@@ -170,3 +170,40 @@ function findTweets(array $user, string $keyword = null, array $user_ids = null)
  
     return $response;
 }
+
+//ツイート削除
+function deleteTweet($deletepost){
+
+     // DB接続
+     $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+     if ($mysqli->connect_errno) {
+         echo 'MySQLの接続に失敗しました。：' . $mysqli->connect_error . "\n";
+         exit;
+     }
+
+    // エスケープ
+    $tweet_id = $mysqli->real_escape_string($deletepost);
+ 
+    // ------------------------------------
+    // SQLクエリを作成
+    // ------------------------------------
+    $query = 'DELETE FROM tweets WHERE id = "' . $deletepost . '"';
+
+     // プリペアドステートメントにクエリを登録
+     $statement = $mysqli->prepare($query);
+
+      // クエリを実行
+    $response = $statement->execute();
+    if ($response === false) {
+        echo 'エラーメッセージ：' . $mysqli->error . "\n";
+    }
+ 
+    // DB接続を解放
+    $statement->close();
+    $mysqli->close();
+ 
+    return $response;
+
+
+
+}

@@ -145,11 +145,11 @@ function uploadImage(array $user, array $file, string $type)
     move_uploaded_file($file['tmp_name'], $image_path);
  
     // 画像ファイルの場合->ファイル名をreturn
-    if (exif_imagetype($image_path)) {
+    //if (exif_imagetype($image_path)) {
         return $image_name;
-    }
+    //}
  
     // 画像ファイル以外の場合
-    echo '選択されたファイルが画像ではないため処理を停止しました。';
-    exit;
+   // echo '選択されたファイルが画像ではないため処理を停止しました。';
+   // exit;
 }

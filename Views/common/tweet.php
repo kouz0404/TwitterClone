@@ -14,8 +14,13 @@
         <p><?php echo $view_tweet['tweet_body'] ?></p>
  
         <?php if (isset($view_tweet['tweet_image_name'])) : ?>
+            <?php if (strpos($view_tweet['tweet_image_name'], '.png') or strpos($view_tweet['tweet_image_name'], '.jpeg')) : ?> 
             <img src="<?php echo buildImagePath($view_tweet['tweet_image_name'], 'tweet'); ?>" alt="" class="post-image">
+            <?php elseif (strpos($view_tweet['tweet_image_name'], '.mov')or strpos($view_tweet['tweet_image_name'], '.mp4')) : ?> 
+            <video controls src="<?php echo buildImagePath($view_tweet['tweet_image_name'], 'tweet'); ?>" alt="" class="post-image"></video>
+           <?php endif; ?>
         <?php endif; ?>
+
  
         <div class="icon-list">
             <div class="like js-like" data-tweet-id="<?php echo htmlspecialchars($view_tweet['tweet_id']); ?>" data-like-id="<?php echo htmlspecialchars($view_tweet['like_id']); ?>">
