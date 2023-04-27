@@ -1,0 +1,17 @@
+{
+    "name": "apple/twitter-clone",
+    "require": {
+        "monolog/monolog": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Apple\\TwitterClone\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kouz0404",
+            "email": "kohei.sawatari0429ss@gmail.com"
+        }
+    ]
+}
